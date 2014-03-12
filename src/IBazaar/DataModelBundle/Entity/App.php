@@ -206,4 +206,44 @@ class App
     {
         return $this->createdAt;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->categories = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add categories
+     *
+     * @param \IBazaar\DataModelBundle\Entity\Category $categories
+     * @return App
+     */
+    public function addCategorie(\IBazaar\DataModelBundle\Entity\Category $categories)
+    {
+        $this->categories[] = $categories;
+    
+        return $this;
+    }
+
+    /**
+     * Remove categories
+     *
+     * @param \IBazaar\DataModelBundle\Entity\Category $categories
+     */
+    public function removeCategorie(\IBazaar\DataModelBundle\Entity\Category $categories)
+    {
+        $this->categories->removeElement($categories);
+    }
+
+    /**
+     * Get categories
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCategories()
+    {
+        return $this->categories;
+    }
 }
