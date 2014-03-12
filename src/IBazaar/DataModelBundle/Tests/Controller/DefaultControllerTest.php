@@ -1,6 +1,6 @@
 <?php
 
-namespace IBazaar\DatamodelBundle\Tests\Controller;
+namespace IBazaar\DataModelBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 

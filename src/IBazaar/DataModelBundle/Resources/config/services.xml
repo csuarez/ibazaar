@@ -6,11 +6,11 @@
 
     <!--
     <parameters>
-        <parameter key="i_bazaar_datamodel.example.class">IBazaar\DatamodelBundle\Example</parameter>
+        <parameter key="i_bazaar_data_model.example.class">IBazaar\DataModelBundle\Example</parameter>
     </parameters>
 
     <services>
-        <service id="i_bazaar_datamodel.example" class="%i_bazaar_datamodel.example.class%">
+        <service id="i_bazaar_data_model.example" class="%i_bazaar_data_model.example.class%">
             <argument type="service" id="service_id" />
             <argument>plain_value</argument>
             <argument>%parameter_name%</argument>
