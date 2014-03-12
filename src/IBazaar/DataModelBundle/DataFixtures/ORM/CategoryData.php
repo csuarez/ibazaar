@@ -12,15 +12,19 @@ class CategoryData extends AbstractFixture implements OrderedFixtureInterface {
 
 	public static $MAX_CATEGORIES = 10;
 
-	public function load(ObjectManager $manager) {
-		$faker = Faker\Factory::create();
+	private $faker;
 
+	function __construct() {
+		$this->faker = Faker\Factory::create();
+	}
+
+	public function load(ObjectManager $manager) {
 		for ($i = 0; $i <= self::$MAX_CATEGORIES; $i++) { 
 			$category = new Category();
 			
 			$category
-				->setName(ucfirst(strtolower($faker->word)))
-				->setDescription($faker->paragraph);
+				->setName(ucfirst($this->faker->word))
+				->setDescription($this->faker->paragraph);
 
 			$manager->persist($category);
 			$this->addReference("category-" . $i, $category);
