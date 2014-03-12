@@ -50,6 +50,16 @@ class App
 	protected $createdAt;
 
     /**
+     * @ORM\ManyToMany(targetEntity="Category", inversedBy="apps", cascade={"all"})
+     * @ORM\JoinTable(name="categories_apps",
+     *      joinColumns={@ORM\JoinColumn(name="app_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="category_id", referencedColumnName="id")}
+     * )
+     */
+    protected $categories;
+
+
+    /**
      * Get id
      *
      * @return integer 
