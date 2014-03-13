@@ -18,7 +18,6 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new IBazaar\DataModelBundle\IBazaarDataModelBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
-,
             new IBazaar\FrontendBundle\IBazaarFrontendBundle(),
         );
 
