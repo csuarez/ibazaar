@@ -23,7 +23,7 @@ class DefaultController extends Controller
     	}
 
         return array(
-        	'top5' => $top5AppsByDownloads
+        	'topAppsByDownloads' => $top5AppsByDownloads
         );
     }
 }
