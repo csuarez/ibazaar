@@ -1,0 +1,7 @@
+{% for app in apps %}
+	<div class="panel panel-default">
+		<div class="panel-body">
+			{{ include('IBazaarFrontendBundle:App:row.html.twig', {'app' : app}) }}
+		</div>
+	</div>
+{% endfor %}
