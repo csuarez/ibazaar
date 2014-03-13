@@ -14,6 +14,16 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return array();
+    	$top5AppsByDownloads = $this->getDoctrine()
+    						->getRepository('IBazaarDataModelBundle:App')
+    						->findOrderedByDownloads(5);
+
+    	if (!$top5AppsByDownloads) {
+    		throw $this->createNotFoundException('There is not any app in the system');
+    	}
+
+        return array(
+        	'top5' => $top5AppsByDownloads
+        );
     }
 }

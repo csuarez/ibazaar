@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * App
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="IBazaar\DataModelBundle\Repository\AppRepository")
  */
 class App
 {
