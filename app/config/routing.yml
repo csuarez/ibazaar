@@ -1,0 +1,5 @@
+i_bazaar_frontend:
+    resource: "@IBazaarFrontendBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
