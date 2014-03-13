@@ -15,17 +15,26 @@
 <div class="row">
 	<div class="col-lg-8">
 		<h2>
-			<ul class="nav nav-tabs">
-			  <li class="active"><a href="#">Más descargadas</a></li>
-			  <li><a href="#">Novedades</a></li>
+			<ul id="tabsPanel" class="nav nav-tabs">
+				<li>
+					<a href="#downloads" data-toggle="tab">Más descargadas</a>
+				</li>
+				<li>
+					<a href="#new" data-toggle="tab">Novedades</a>
+				</li>
 			</ul>
 		</h2>
-		<div class="col-lg-12">
-			<ul class="list-group">
-		  		{% for app in topAppsByDownloads %}
-		  			{{ include('IBazaarFrontendBundle:App:row.html.twig', {'app' : app}) }}
-		  		{% endfor %}
-			</ul>
+		<div class="col-lg-12 tab-content">
+			<div class="tab-pane" id="downloads">
+				<ul class="list-group">
+			  		{% for app in topAppsByDownloads %}
+			  			{{ include('IBazaarFrontendBundle:App:row.html.twig', {'app' : app}) }}
+			  		{% endfor %}
+				</ul>	
+			</div>
+			<div class="tab-pane" id="new">
+				foo
+			</div>
 		</div>
 	</div>
 	<div class="col-lg-4">
@@ -50,4 +59,17 @@
 		</div>
 	</div>
 </div>
+{% endblock %}
+
+{% block javascript %}
+	{{ parent() }}
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#tabsPanel a[href="#downloads"]').tab('show')
+			$('#tabsPanel a').click(function (e) {
+			  e.preventDefault()
+			  $(this).tab('show');
+			})
+		});
+	</script>
 {% endblock %}
