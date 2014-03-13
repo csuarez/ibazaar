@@ -29,7 +29,7 @@ class DefaultController extends Controller
 
     	$categories = $this->getDoctrine()
     						->getRepository('IBazaarDataModelBundle:Category')
-    						->findN(9);
+    						->findN(8);
 
         return array(
         	'mostDownloadedApps' 	=> $mostDownloadedApps,
