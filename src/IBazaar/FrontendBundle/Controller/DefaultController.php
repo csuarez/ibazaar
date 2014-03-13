@@ -27,9 +27,14 @@ class DefaultController extends Controller
     		throw $this->createNotFoundException('There is not any app in the system');
     	}
 
+    	$categories = $this->getDoctrine()
+    						->getRepository('IBazaarDataModelBundle:Category')
+    						->findN(9);
+
         return array(
-        	'mostDownloadedApps' => $mostDownloadedApps,
-        	'lastApps' => $lastApps
+        	'mostDownloadedApps' 	=> $mostDownloadedApps,
+        	'lastApps' 				=> $lastApps,
+        	'categories' 			=> $categories
         );
     }
 }
