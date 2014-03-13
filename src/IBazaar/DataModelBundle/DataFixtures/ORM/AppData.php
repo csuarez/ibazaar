@@ -52,6 +52,16 @@ class AppData extends AbstractFixture implements OrderedFixtureInterface {
 				$app->setPrice(0);
 			}
 
+			
+			$categories = $this->getCategories();
+			
+			$categoriesToAdd = rand(1,4);
+			$firstCategoryId = rand(0, count($categories) - 1);
+			for ($j = 0; $j < $categoriesToAdd; $j++) {
+				$categoryIdxToAdd = ($firstCategoryId + $j) % count($categories);
+				$app->addCategory($categories[$categoryIdxToAdd]);
+			}
+
 			$manager->persist($app);
 		}
 		$manager->flush();
