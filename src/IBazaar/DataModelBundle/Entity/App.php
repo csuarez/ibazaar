@@ -227,6 +227,11 @@ class App
         return $this;
     }
 
+    public function addCategory(\IBazaar\DataModelBundle\Entity\Category $categories)
+    {
+        return $this->addCategorie($categories);
+    }
+
     /**
      * Remove categories
      *
@@ -235,6 +240,11 @@ class App
     public function removeCategorie(\IBazaar\DataModelBundle\Entity\Category $categories)
     {
         $this->categories->removeElement($categories);
+    }
+
+    public function removeCategory(\IBazaar\DataModelBundle\Entity\Category $categories)
+    {
+        $this->removeCategorie($categories);
     }
 
     /**
