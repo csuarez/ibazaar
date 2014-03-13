@@ -26,11 +26,13 @@
 		</h2>
 		<div class="col-lg-12 tab-content">
 			<div class="tab-pane" id="downloads">
-				<ul class="list-group">
-			  		{% for app in topAppsByDownloads %}
-			  			{{ include('IBazaarFrontendBundle:App:row.html.twig', {'app' : app}) }}
-			  		{% endfor %}
-				</ul>	
+		  		{% for app in topAppsByDownloads %}
+					<div class="panel panel-default">
+						<div class="panel-body">
+		  					{{ include('IBazaarFrontendBundle:App:row.html.twig', {'app' : app}) }}
+		  				</div>
+					</div>
+		  		{% endfor %}
 			</div>
 			<div class="tab-pane" id="new">
 				foo

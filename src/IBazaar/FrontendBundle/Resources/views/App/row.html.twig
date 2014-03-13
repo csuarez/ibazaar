@@ -1,16 +1,14 @@
-<li class="list-group-item">
-	<div class="row">
-	    <div class="col-lg-3 text-center">
-	  		<p><img src="{{ app.logoUrl }}" alt="" width="100" height="100"></p>
-	  		<span class="label label-success">{{ app.price }} €</span>
-	  	</div>
-	  	<div class="col-lg-9">
-	  		<h4>{{ app.name }}</h4>
-	  		<small class="text-muted">{{ app.downloads }} descargas // {{ app.createdAt | date }}</small>
-	  		<p class="text-justify">{{ app.description }}</p>
-	  		{% for category in app.categories %}
-	  		    <span class="label label-default">{{ category.name }}</span>
-	  		{% endfor %}
-	  	</div>
-	</div>
-</li>
+<div class="row">
+    <div class="col-lg-3 text-center">
+  		<p><img src="{{ app.logoUrl }}" alt="" width="100" height="100"></p>
+  		<span class="label label-success">{{ app.price }} €</span>
+  	</div>
+  	<div class="col-lg-9">
+  		<h4>{{ app.name }}</h4>
+  		<small class="text-muted">{{ app.downloads }} descargas // {{ app.createdAt | date }}</small>
+  		<p class="text-justify">{{ app.description }}</p>
+  		{% for category in app.categories %}
+  		    <span class="label label-default">{{ category.name }}</span>
+  		{% endfor %}
+  	</div>
+</div>
