@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>iBazaar</title>
+	</head>
+	<body>
+		<h1>iBazaar</h1>
+		{% block content %}
+			<!-- CONTENT HERE -->
+		{% endblock %}
+		{% block stylesheets %}
+			<link href="{{ asset('bundles/ibazaarfrontend/css/bootstrap.css') }}" rel="stylesheet" type="text/css" />
+		{% endblock %}
+		{% block javascripts %}
+			<script type="text/javascript" src="{{ asset('bundles/ibazaarfrontend/js/bootstrap.min.js') }}"></script>
+		{% endblock %}
+	</body>
+</html>
