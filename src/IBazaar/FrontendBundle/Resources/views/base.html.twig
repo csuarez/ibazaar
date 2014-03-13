@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		 <meta charset="utf-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>iBazaar</title>
-	</head>
-	<body>
-		{{ include('IBazaarFrontendBundle::navbar.html.twig') }}
-		{% block content %}
-			<!-- CONTENT HERE -->
-		{% endblock %}
 		{% block stylesheets %}
 			<link href="{{ asset('bundles/ibazaarfrontend/css/bootstrap.css') }}" rel="stylesheet" type="text/css" />
 		{% endblock %}
+	</head>
+	<body>
+		{{ include('IBazaarFrontendBundle::navbar.html.twig') }}
+		<div class="container">
+		{% block content %}
+			<!-- CONTENT HERE -->
+		{% endblock %}
+		</div>
+		
 		{% block javascripts %}
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 			<script type="text/javascript" src="{{ asset('bundles/ibazaarfrontend/js/bootstrap.min.js') }}"></script>
 		{% endblock %}
 	</body>
