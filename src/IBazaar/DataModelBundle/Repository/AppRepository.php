@@ -12,6 +12,14 @@ class AppRepository extends EntityRepository {
 			->getQuery();
 		return $query->getResult();
 	}
+
+	public function findOrderedByCreation($maxResults) {
+		$query = $this->createQueryBuilder('a')
+			->add('orderBy', 'a.createdAt DESC')
+			->setMaxResults($maxResults)
+			->getQuery();
+		return $query->getResult();
+	}
 }
 
 ?>

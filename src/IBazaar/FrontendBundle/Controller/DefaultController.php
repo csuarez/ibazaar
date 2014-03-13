@@ -14,16 +14,22 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-    	$top5AppsByDownloads = $this->getDoctrine()
+    	$mostDownloadedApps = $this->getDoctrine()
     						->getRepository('IBazaarDataModelBundle:App')
     						->findOrderedByDownloads(5);
 
-    	if (!$top5AppsByDownloads) {
+    	$lastApps = $this->getDoctrine()
+    						->getRepository('IBazaarDataModelBundle:App')
+    						->findOrderedByCreation(5);
+
+
+    	if ((!$mostDownloadedApps) || (!$lastApps)) {
     		throw $this->createNotFoundException('There is not any app in the system');
     	}
 
         return array(
-        	'topAppsByDownloads' => $top5AppsByDownloads
+        	'mostDownloadedApps' => $mostDownloadedApps,
+        	'lastApps' => $lastApps
         );
     }
 }

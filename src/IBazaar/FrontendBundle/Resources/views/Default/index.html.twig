@@ -26,7 +26,7 @@
 		</h2>
 		<div class="col-lg-12 tab-content">
 			<div class="tab-pane" id="downloads">
-		  		{% for app in topAppsByDownloads %}
+		  		{% for app in mostDownloadedApps %}
 					<div class="panel panel-default">
 						<div class="panel-body">
 		  					{{ include('IBazaarFrontendBundle:App:row.html.twig', {'app' : app}) }}
@@ -35,7 +35,13 @@
 		  		{% endfor %}
 			</div>
 			<div class="tab-pane" id="new">
-				foo
+				{% for app in lastApps %}
+					<div class="panel panel-default">
+						<div class="panel-body">
+		  					{{ include('IBazaarFrontendBundle:App:row.html.twig', {'app' : app}) }}
+		  				</div>
+					</div>
+		  		{% endfor %}
 			</div>
 		</div>
 	</div>
