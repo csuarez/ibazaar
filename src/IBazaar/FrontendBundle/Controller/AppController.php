@@ -5,6 +5,9 @@ namespace IBazaar\FrontendBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Pagerfanta\Pagerfanta;
+use Pagerfanta\Adapter\DoctrineORMAdapter;
+use Pagerfanta\Exception\NotValidCurrentPageException;
 
 class AppController extends Controller
 {
@@ -27,16 +30,21 @@ class AppController extends Controller
     }
 
     /**
-     * @Route("/top-descargas", name="app_downloads")
+     * @Route("/top-descargas/{page}", name="app_downloads", requirements={"page" = "\d+"}, defaults={"page" = "1"})
      * @Template()
      */
-    public function listByDownloadsAction() {
-        $apps = $this->getDoctrine()
+    public function listByDownloadsAction($page) {
+        $query = $this->getDoctrine()
                     ->getRepository('IBazaarDataModelBundle:App')
-                    ->findOrderedByDownloads(5);
+                    ->getQueryForMostDownloaded();
 
-        if (!$apps) {
-            throw $this->createNotFoundException('There is not any app in the system');
+        $apps = new Pagerfanta(new DoctrineORMAdapter($query));
+        $apps->setMaxPerPage(5);
+
+        try {
+            $apps->setCurrentPage($page);
+        } catch(NotValidCurrentPageException $e) {
+            throw new NotFoundHttpException();
         }
 
         return array(

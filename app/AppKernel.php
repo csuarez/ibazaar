@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new IBazaar\DataModelBundle\IBazaarDataModelBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new IBazaar\FrontendBundle\IBazaarFrontendBundle(),
+            new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

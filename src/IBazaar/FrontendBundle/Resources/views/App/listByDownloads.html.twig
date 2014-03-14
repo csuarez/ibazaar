@@ -2,5 +2,5 @@
 {% block content %}
 <h1>Aplicaciones más descargadas</h1>
 {{ include('IBazaarFrontendBundle:Default:applist.html.twig', {'apps' : apps}) }}
-
+{{ pagerfanta(apps, 'twitter_bootstrap3') }}
 {% endblock %}
