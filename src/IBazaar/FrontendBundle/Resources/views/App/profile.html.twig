@@ -1,0 +1,35 @@
+{% extends 'IBazaarFrontendBundle::base.html.twig' %}
+
+{% block content %}
+	<div class="row">
+		<div class="col-lg-12">
+			<h1>{{ app.name }}</h1>
+		</div>
+		<div class="col-lg-3 text-center">
+			<p><img src="{{ app.logoUrl }}" alt="" width="250" height="250"></p>
+			<h3><span class="label label-success">DESCARGAR</span></h3>
+		</div>
+		<div class="col-lg-9">
+			<dl class="dl-horizontal">
+				<ul class="list-group">
+					<li class="list-group-item">
+						<dt>Precio</dt>
+						<dd><span class="label label-success">{{ app.price }} €</span></dd>
+					</li>
+					<li class="list-group-item">
+						<dt>Descargas</dt>
+						<dd>{{ app.downloads }}</dd>
+					</li>
+					<li class="list-group-item">
+						<dt>Fecha de alta</dt>
+						<dd>{{ app.createdAt | date}}</dd>
+					</li>
+					<li class="list-group-item">
+						<dt>Descripción</dt>
+						<dd>{{ app.description }}</dd>
+					</li>
+				</ul>
+			</dl>
+		</div>
+	</div>
+{% endblock %}
