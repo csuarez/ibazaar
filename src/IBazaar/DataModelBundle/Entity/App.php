@@ -50,6 +50,11 @@ class App
 	protected $createdAt;
 
     /**
+     * @ORM\Column(type="string")
+     */
+    protected $marketUrl;
+
+    /**
      * @ORM\ManyToMany(targetEntity="Category", inversedBy="apps", cascade={"all"})
      * @ORM\JoinTable(name="categories_apps",
      *      joinColumns={@ORM\JoinColumn(name="app_id", referencedColumnName="id")},
@@ -255,5 +260,28 @@ class App
     public function getCategories()
     {
         return $this->categories;
+    }
+
+    /**
+     * Set marketUrl
+     *
+     * @param string $marketUrl
+     * @return App
+     */
+    public function setMarketUrl($marketUrl)
+    {
+        $this->marketUrl = $marketUrl;
+    
+        return $this;
+    }
+
+    /**
+     * Get marketUrl
+     *
+     * @return string 
+     */
+    public function getMarketUrl()
+    {
+        return $this->marketUrl;
     }
 }
