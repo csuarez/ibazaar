@@ -1,6 +1,14 @@
 {% extends 'IBazaarFrontendBundle::base.html.twig' %}
 {% block content %}
-<h1>Aplicaciones más descargadas</h1>
-{{ include('IBazaarFrontendBundle:Default:applist.html.twig', {'apps' : apps}) }}
-{{ pagerfanta(apps, 'twitter_bootstrap3') }}
+<div class="row">
+	<div class="col-lg-12">
+		<h1>Aplicaciones más descargadas</h1>
+	</div>
+	<div class="col-lg-8">
+		{{ include('IBazaarFrontendBundle:Default:applist.html.twig', {'apps' : apps}) }}
+	</div>
+	<div class="col-lg-12 text-center">
+		{{ pagerfanta(apps, 'twitter_bootstrap3', { 'proximity': 2}) }}
+	</div>
+</div>
 {% endblock %}
