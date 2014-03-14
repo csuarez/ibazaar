@@ -7,14 +7,20 @@
 		</div>
 		<div class="col-lg-3 text-center">
 			<p><img src="{{ app.logoUrl }}" alt="" width="250" height="250"></p>
-			<h3><span class="label label-success">DESCARGAR</span></h3>
+			<a class="btn btn-success" href="{{ app.marketUrl }}">
+				{% if app.isFree %}
+					DESCARGAR
+				{% else %}
+				    COMPRAR
+				{% endif %}
+			</a>
 		</div>
 		<div class="col-lg-9">
 			<dl class="dl-horizontal">
 				<ul class="list-group">
 					<li class="list-group-item">
 						<dt>Precio</dt>
-						<dd><span class="label label-success">{{ app.price }} €</span></dd>
+						<dd>{{ app.price }} €</dd>
 					</li>
 					<li class="list-group-item">
 						<dt>Descargas</dt>
