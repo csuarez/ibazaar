@@ -55,7 +55,7 @@ class App
     protected $marketUrl;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Category", inversedBy="apps", cascade={"all"})
+     * @ORM\ManyToMany(targetEntity="Category", inversedBy="apps", cascade={"all"}, fetch="EAGER")
      * @ORM\JoinTable(name="categories_apps",
      *      joinColumns={@ORM\JoinColumn(name="app_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="category_id", referencedColumnName="id")}
