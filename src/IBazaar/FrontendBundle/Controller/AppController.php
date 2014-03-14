@@ -25,5 +25,23 @@ class AppController extends Controller
         	'app' => $app
         );
     }
+
+    /**
+     * @Route("/top-descargas", name="app_downloads")
+     * @Template()
+     */
+    public function listByDownloadsAction() {
+        $apps = $this->getDoctrine()
+                    ->getRepository('IBazaarDataModelBundle:App')
+                    ->findOrderedByDownloads(5);
+
+        if (!$apps) {
+            throw $this->createNotFoundException('There is not any app in the system');
+        }
+
+        return array(
+            'apps' => $apps
+        );
+    }
 }
 ?>
