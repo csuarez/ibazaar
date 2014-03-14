@@ -31,6 +31,10 @@ class DefaultController extends Controller
     						->getRepository('IBazaarDataModelBundle:Category')
     						->findN(8);
 
+        if (!$categories) {
+            throw $this->createNotFoundException('There is not any category in the system');
+        }
+
         return array(
         	'mostDownloadedApps' 	=> $mostDownloadedApps,
         	'lastApps' 				=> $lastApps,
