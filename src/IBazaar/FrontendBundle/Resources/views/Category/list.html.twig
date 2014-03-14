@@ -4,8 +4,12 @@
 		<h1>Categorías</h1>
 	</div>
 	<div class="col-lg-9">
-	{% for category in categories %}
-	    <div class="col-lg-4"><h3><span class="label label-default col-lg-12">{{ category.name }}</span></h3></div>
-	{% endfor %}
+		<div class="row">
+		{% for category in categories %}
+		    <div class="col-lg-4">
+		    	{{ include('IBazaarFrontendBundle:Category:element.html.twig', {'category' : category}) }}
+		    </div>
+		{% endfor %}
+		</div>
 	</div>
 {% endblock %}

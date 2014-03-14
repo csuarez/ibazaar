@@ -45,6 +45,15 @@ class AppRepository extends EntityRepository {
 
 		return $queryBuilder;
 	}
+
+	public function getQueryByCategory($categoryId) {
+		$queryBuilder = $this->createQueryBuilder('a')
+						->leftJoin('a.categories', 'c')
+						->where('c.id = :id')
+						->setParameter('id', $categoryId);
+
+		return $queryBuilder;
+	}
 }
 
 ?>
