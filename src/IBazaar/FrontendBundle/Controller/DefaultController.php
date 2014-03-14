@@ -38,3 +38,4 @@ class DefaultController extends Controller
         );
     }
 }
+?>
