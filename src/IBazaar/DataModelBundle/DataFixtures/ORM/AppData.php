@@ -44,7 +44,8 @@ class AppData extends AbstractFixture implements OrderedFixtureInterface {
 				->setPrice($this->faker->randomFloat(1,0,10))
 				->setLogoUrl($this->faker->imageUrl(500, 500))
 				->setDownloads($this->faker->randomNumber(0,10000))
-				->setCreatedAt($this->faker->dateTime());
+				->setCreatedAt($this->faker->dateTime())
+				->setMarketUrl($this->faker->url);
 
 			//The 33% of the generated apps will be free.
 			$isFree = rand(0, 2) == 1; 
