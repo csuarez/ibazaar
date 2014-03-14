@@ -9,7 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class AppController extends Controller
 {
     /**
-     * @Route("/app/{id}")
+     * @Route("/app/{id}", name="app_profile")
      * @Template()
      */
     public function profileAction($id) {
