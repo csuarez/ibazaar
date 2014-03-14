@@ -26,10 +26,10 @@
 		</h2>
 		<div class="col-lg-12 tab-content">
 			<div class="tab-pane" id="downloads">
-		  		{{ include('IBazaarFrontendBundle:Default:applist.html.twig', {'apps' : mostDownloadedApps}) }}
+		  		{{ include('IBazaarFrontendBundle:App:list.html.twig', {'apps' : mostDownloadedApps}) }}
 			</div>
 			<div class="tab-pane" id="new">
-				{{ include('IBazaarFrontendBundle:Default:applist.html.twig', {'apps' : lastApps}) }}
+				{{ include('IBazaarFrontendBundle:App:list.html.twig', {'apps' : lastApps}) }}
 			</div>
 		</div>
 	</div>
