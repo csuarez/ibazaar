@@ -34,6 +34,17 @@ class AppRepository extends EntityRepository {
 
 		return $queryBuilder;
 	}
+
+	public function getQueryForSearch($name) {
+		$processedName = str_replace(" ", "%", $name);
+		$term = '%' . $processedName . '%';
+
+		$queryBuilder = $this->createQueryBuilder('a')
+						->where('a.name LIKE :term')
+						->setParameter('term', $term);
+
+		return $queryBuilder;
+	}
 }
 
 ?>
