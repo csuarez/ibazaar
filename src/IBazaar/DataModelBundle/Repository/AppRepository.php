@@ -27,6 +27,13 @@ class AppRepository extends EntityRepository {
 
 		return $queryBuilder;
 	}
+
+	public function getQueryForNewest() {
+		$queryBuilder = $this->createQueryBuilder('a')
+						->add('orderBy', 'a.createdAt DESC');
+
+		return $queryBuilder;
+	}
 }
 
 ?>

@@ -51,5 +51,28 @@ class AppController extends Controller
             'apps' => $apps
         );
     }
+
+    /**
+     * @Route("/nuevas/{page}", name="app_new", requirements={"page" = "\d+"}, defaults={"page" = "1"})
+     * @Template()
+     */
+    public function listByCreationDateAction($page) {
+        $query = $this->getDoctrine()
+                    ->getRepository('IBazaarDataModelBundle:App')
+                    ->getQueryForNewest();
+
+        $apps = new Pagerfanta(new DoctrineORMAdapter($query));
+        $apps->setMaxPerPage(5);
+
+        try {
+            $apps->setCurrentPage($page);
+        } catch(NotValidCurrentPageException $e) {
+            throw new NotFoundHttpException();
+        }
+
+        return array(
+            'apps' => $apps
+        );
+    }
 }
 ?>

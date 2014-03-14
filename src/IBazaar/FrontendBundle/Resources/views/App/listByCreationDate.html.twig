@@ -1,0 +1,9 @@
+{% extends 'IBazaarFrontendBundle::base.html.twig' %}
+{% block content %}
+<div class="row">
+	<div class="col-lg-12">
+		<h1>Últimas aplicaciones</h1>
+		{{ include('IBazaarFrontendBundle:App:paginatedList.html.twig', {'apps' : apps}) }}
+	</div>
+</div>
+{% endblock %}
