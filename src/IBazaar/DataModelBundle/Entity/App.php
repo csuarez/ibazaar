@@ -284,4 +284,8 @@ class App
     {
         return $this->marketUrl;
     }
+
+    public function isFree() {
+        return $this->price == 0;
+    }
 }
