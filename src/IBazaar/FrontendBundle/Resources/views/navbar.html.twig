@@ -12,9 +12,9 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li {% if app.request.get('_route') == "app_new" %}class="active"{% endif %}><a href="{{ path("app_new")}}">Novedades</a></li>
-        <li {% if app.request.get('_route') == "app_downloads" %}class="active"{% endif %}><a href="{{ path("app_downloads") }}">Más descargados</a></li>
-        <li {% if app.request.get('_route') == "categories_list" %}class="active"{% endif %}><a href="{{ path("categories_list") }}">Categorías</a></li>
+        {{ include('IBazaarFrontendBundle::navelement.html.twig', {'route' : 'app_new', 'label' : 'Novedades'}) }}
+        {{ include('IBazaarFrontendBundle::navelement.html.twig', {'route' : 'app_downloads', 'label' : 'Más descargadas'}) }}
+        {{ include('IBazaarFrontendBundle::navelement.html.twig', {'route' : 'categories_list', 'label' : 'Categorías'}) }}        
       </ul>
       <form class="navbar-form navbar-right" role="search" action="{{ path("app_search") }}">
         <div class="form-group">

@@ -12,6 +12,9 @@ use Symfony\Component\HttpFoundation\Request;
 
 class AppController extends Controller
 {
+
+    private static $MAX_RESULTS = 5;
+
     /**
      * @Route("/app/{id}", name="app_profile", requirements={"id" = "\d+"})
      * @Template()
@@ -40,7 +43,7 @@ class AppController extends Controller
                     ->getQueryForMostDownloaded();
 
         $apps = new Pagerfanta(new DoctrineORMAdapter($query));
-        $apps->setMaxPerPage(5);
+        $apps->setMaxPerPage(self::$MAX_RESULTS);
 
         try {
             $apps->setCurrentPage($page);
@@ -63,7 +66,7 @@ class AppController extends Controller
                     ->getQueryForNewest();
 
         $apps = new Pagerfanta(new DoctrineORMAdapter($query));
-        $apps->setMaxPerPage(5);
+        $apps->setMaxPerPage(self::$MAX_RESULTS);
 
         try {
             $apps->setCurrentPage($page);
@@ -88,7 +91,7 @@ class AppController extends Controller
                     ->getQueryForSearch($searchTerm);
 
         $apps = new Pagerfanta(new DoctrineORMAdapter($query));
-        $apps->setMaxPerPage(5);
+        $apps->setMaxPerPage(self::$MAX_RESULTS);
 
         try {
             $apps->setCurrentPage($page);
