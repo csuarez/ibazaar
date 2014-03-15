@@ -30,7 +30,7 @@ class CategoryController extends Controller
     }
 
     /**
-     * @Route("/categoria/{id}/{page}", name="categories_profile", requirements={"page" = "\d+", "id" = "\d+"}, defaults={"page" = "1"})
+     * @Route("/categoria/{id}/{page}", name="category_profile", requirements={"page" = "\d+", "id" = "\d+"}, defaults={"page" = "1"})
      * @Template()
      */
     public function profileAction($id, $page) {
