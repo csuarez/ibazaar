@@ -27,7 +27,7 @@ class AppController extends Controller
     	}
 
         return array(
-        	'app' => $app
+        	'currentApp' => $app
         );
     }
 
@@ -75,7 +75,7 @@ class AppController extends Controller
                     ->getQueryForSearch($searchTerm);
 
         $apps = Pagination::getPaginatedResults($query, self::$MAX_RESULTS, $page);
-        
+
         return array(
             'apps' => $apps,
             'term' => $searchTerm
