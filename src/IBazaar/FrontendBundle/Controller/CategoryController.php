@@ -5,9 +5,7 @@ namespace IBazaar\FrontendBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Pagerfanta\Pagerfanta;
-use Pagerfanta\Adapter\DoctrineORMAdapter;
-use Pagerfanta\Exception\NotValidCurrentPageException;
+use IBazaar\FrontendBundle\Utils\Pagination;
 
 class CategoryController extends Controller
 {
@@ -46,14 +44,7 @@ class CategoryController extends Controller
                     ->getRepository('IBazaarDataModelBundle:App')
                     ->getQueryByCategory($id);
 
-        $apps = new Pagerfanta(new DoctrineORMAdapter($query));
-        $apps->setMaxPerPage(5);
-
-        try {
-            $apps->setCurrentPage($page);
-        } catch(NotValidCurrentPageException $e) {
-            throw new NotFoundHttpException();
-        }
+        $apps = Pagination::getPaginatedResults($query, 5, $page);
 
         return array(
             'apps' => $apps,

@@ -5,10 +5,8 @@ namespace IBazaar\FrontendBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Pagerfanta\Pagerfanta;
-use Pagerfanta\Adapter\DoctrineORMAdapter;
-use Pagerfanta\Exception\NotValidCurrentPageException;
 use Symfony\Component\HttpFoundation\Request;
+use IBazaar\FrontendBundle\Utils\Pagination;
 
 class AppController extends Controller
 {
@@ -42,14 +40,7 @@ class AppController extends Controller
                     ->getRepository('IBazaarDataModelBundle:App')
                     ->getQueryForMostDownloaded();
 
-        $apps = new Pagerfanta(new DoctrineORMAdapter($query));
-        $apps->setMaxPerPage(self::$MAX_RESULTS);
-
-        try {
-            $apps->setCurrentPage($page);
-        } catch(NotValidCurrentPageException $e) {
-            throw new NotFoundHttpException();
-        }
+        $apps = Pagination::getPaginatedResults($query, self::$MAX_RESULTS, $page);        
 
         return array(
             'apps' => $apps
@@ -65,14 +56,7 @@ class AppController extends Controller
                     ->getRepository('IBazaarDataModelBundle:App')
                     ->getQueryForNewest();
 
-        $apps = new Pagerfanta(new DoctrineORMAdapter($query));
-        $apps->setMaxPerPage(self::$MAX_RESULTS);
-
-        try {
-            $apps->setCurrentPage($page);
-        } catch(NotValidCurrentPageException $e) {
-            throw new NotFoundHttpException();
-        }
+        $apps = Pagination::getPaginatedResults($query, self::$MAX_RESULTS, $page);
 
         return array(
             'apps' => $apps
@@ -90,15 +74,8 @@ class AppController extends Controller
                     ->getRepository('IBazaarDataModelBundle:App')
                     ->getQueryForSearch($searchTerm);
 
-        $apps = new Pagerfanta(new DoctrineORMAdapter($query));
-        $apps->setMaxPerPage(self::$MAX_RESULTS);
-
-        try {
-            $apps->setCurrentPage($page);
-        } catch(NotValidCurrentPageException $e) {
-            throw new NotFoundHttpException();
-        }
-
+        $apps = Pagination::getPaginatedResults($query, self::$MAX_RESULTS, $page);
+        
         return array(
             'apps' => $apps,
             'term' => $searchTerm
