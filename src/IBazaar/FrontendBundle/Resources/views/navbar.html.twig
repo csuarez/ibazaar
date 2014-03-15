@@ -12,9 +12,9 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="{{ path("app_new")}}">Novedades</a></li>
-        <li><a href="{{ path("app_downloads") }}">Más descargados</a></li>
-        <li><a href="{{ path("categories_list") }}">Categorías</a></li>
+        <li {% if app.request.get('_route') == "app_new" %}class="active"{% endif %}><a href="{{ path("app_new")}}">Novedades</a></li>
+        <li {% if app.request.get('_route') == "app_downloads" %}class="active"{% endif %}><a href="{{ path("app_downloads") }}">Más descargados</a></li>
+        <li {% if app.request.get('_route') == "categories_list" %}class="active"{% endif %}><a href="{{ path("categories_list") }}">Categorías</a></li>
       </ul>
       <form class="navbar-form navbar-right" role="search" action="{{ path("app_search") }}">
         <div class="form-group">
