@@ -2,7 +2,13 @@
 <div class="row">
     <div class="col-lg-3 text-center">
   		<p><img src="{{ app.logoUrl }}" alt="" width="100" height="100"></p>
-  		<span class="label label-success">{{ app.price }} €</span>
+  		<span class="label label-success">
+      {% if app.isFree %}
+        GRATIS
+      {% else %}
+        {{ app.price }} €
+      {% endif %}
+      </span>
   	</div>
   	<div class="col-lg-9">
   		<h4>{{ app.name }}</h4>
