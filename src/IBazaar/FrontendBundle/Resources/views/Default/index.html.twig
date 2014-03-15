@@ -4,12 +4,14 @@
   <h1>¡Bienvenido a iBazaar!</h1>
   <p>Comienza a explorar la mejor selección de apps para iPhone y iPad:</p>
   <div class="row">
-  	<div class="col-lg-10">
-		<input class="form-control input-lg" type="text" placeholder="Introduce el nombre de una app">
-  	</div>
-  	<div class="col-lg-2">
-  		<a class="btn btn-primary btn-lg" role="button">Buscar</a>
-  	</div>
+  	<form role="search" action="{{ path("app_search") }}">
+	  	<div class="col-lg-10">
+			<input class="form-control input-lg col-lg-12" type="text" name="term" placeholder="Introduce el nombre de una app">
+	  	</div>
+	  	<div class="col-lg-2">
+	  		<button type="submit" class="btn btn-primary btn-lg">Buscar</button>
+	  	</div>
+  	</form>
   </div>
 </div>
 <div class="row">

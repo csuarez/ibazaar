@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Pagerfanta\Pagerfanta;
 use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\Exception\NotValidCurrentPageException;
+use Symfony\Component\HttpFoundation\Request;
 
 class AppController extends Controller
 {
@@ -77,13 +78,14 @@ class AppController extends Controller
 
 
     /**
-     * @Route("/buscar/{term}/{page}", name="app_search", requirements={"page" = "\d+"}, defaults={"page" = "1"})
+     * @Route("/buscar/{page}", name="app_search", requirements={"page" = "\d+"}, defaults={"page" = "1"})
      * @Template()
      */
-    public function searchAction($term, $page) {
+    public function searchAction($page, Request $request) {
+        $searchTerm = $request->query->get("term");
         $query = $this->getDoctrine()
                     ->getRepository('IBazaarDataModelBundle:App')
-                    ->getQueryForSearch($term);
+                    ->getQueryForSearch($searchTerm);
 
         $apps = new Pagerfanta(new DoctrineORMAdapter($query));
         $apps->setMaxPerPage(5);
@@ -96,7 +98,7 @@ class AppController extends Controller
 
         return array(
             'apps' => $apps,
-            'term' => $term
+            'term' => $searchTerm
         );
     }
 }
