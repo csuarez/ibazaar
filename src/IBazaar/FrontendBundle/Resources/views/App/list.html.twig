@@ -4,4 +4,6 @@
 			{{ include('IBazaarFrontendBundle:App:row.html.twig', {'app' : app}) }}
 		</div>
 	</div>
+{% else %}
+	<h4>No hay resultados</h4>
 {% endfor %}
