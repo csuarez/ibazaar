@@ -29,8 +29,6 @@ $ php composer.phar install
 ```
 * Creamos las bases de datos:
 ```
-$ php composer.phar install
-```
 $ php app/console doctrine:database:create
 $ php app/console doctrine:schema:create
 ```
